@@ -1,0 +1,276 @@
+number based
+----------------------------
+generate series and nth element
+
+
+	int a=input1,b=input2,c=input3,n=input4;
+	int d=b-a,e=c-b;
+	 if(a<b && b<c)
+	 {
+		for(int i=4;i<=n;i++)
+		{
+			if(i%2==0){c+=d;}
+			else{c+=e;}
+		}
+	}
+     if(a>b && b>c)
+	{
+		for(int i=4;i<=n;i++)
+		{
+			if(i%2==0){c+=d;}
+			else{c+=e;}
+		}
+	}
+	return c;
+-----------------------------------
+find result after alternate add_sub of n
+
+  if(input2==1)
+	{
+	  int s=input1,ct=1;
+	  for(int i=input1-1;i>=1;i--)
+	  {
+       if(ct%2!=0){s-=i;}
+	   else{s+=i;}
+	   ct+=1;
+	  }
+	  return s;
+	}
+	  if(input2==2)
+	{
+	  int s=input1+input1-1,ct=1;
+	  for(int i=input1-2;i>=1;i--)
+	  {
+       if(ct%2!=0){s-=i;}
+	   else{s+=i;}
+	   ct+=1;
+	  }
+	  return s;
+	}
+	return 0;
+-------------------------------------
+calculate sum of non prime index values
+
+
+	int flag,s=0;
+		for(int i=0;i<input2;i++)
+		{
+			flag=0;
+			for(int j=2;j<=i/2;j++)
+			{
+				if(i%j==0)
+                {
+					flag=1;
+					break;
+				}
+			}
+			if(i<2 || flag==1)
+			{s+=input1[i];}
+		}
+		return s;
+--------------------------------------------------
+one digit to be removed to form palindrome
+
+
+class Okay
+{
+	public static boolean pali(String s,int low,int high)
+	{
+		while (low<high)
+		{
+           if(s.charAt(low)!=s.charAt(high))
+		      return false;
+			low++;
+			high--;
+		}
+		return true;
+	}
+}
+
+        String s=String.valueOf(input1);
+		int l=s.length();
+		int i=0,j=l-1;
+		while(i<j)
+		{
+			if(s.charAt(i)==s.charAt(j))
+			{
+				i++;
+				j--;
+			}
+			else
+			{
+				if(Okay.pali(s,i+1,j))
+				   return s.charAt(i)-48;
+				if(Okay.pali(s,i,j-1))
+				   return s.charAt(j)-48; 
+			}
+		}
+		return -1;
+-------------------------------------------------------------------
+The "Nambiar Number" Generator
+
+	    Vector<Integer> arr= new Vector<>();
+		int temp=0,pflag=-1,cflag;
+		for(int i=0;i<input1.length();i++)
+		{
+			temp+=input1.charAt(i)-48;
+            cflag=temp%2;
+			if(pflag!=-1 && cflag!=pflag)
+			{
+              arr.add(temp);
+			  temp=0;
+			  pflag=-1;
+			}
+			else{
+			pflag=cflag;}
+		}
+		int l=input1.length()-1;
+		if(temp!=0 || input1.charAt(l)=='0'){arr.add(temp);}
+		String res="";
+		for(Integer i:arr)
+		{
+          res+=String.valueOf(i);
+		}
+		return Integer.valueOf(res);
+-------------------------------------------------------------------------------
+user id generation
+
+        String sm,lg;
+		if(input1.length()==input2.length())
+		{
+			if(input1.compareTo(input2)<0)
+			{
+				sm=input1;
+				lg=input2;
+			}
+			else
+			{
+				sm=input2;
+				lg=input1;
+			}
+		}
+		else if(input1.length()<input2.length())
+		{
+			sm=input1;
+			lg=input2;
+		}
+		else
+		{
+		    sm=input2;
+			lg=input1;	
+		}
+		String res="";
+		res=sm.charAt(sm.length()-1)+lg;
+		String rod=String.valueOf(input3);
+		int l=1,r=1;
+		for(int i=0;i<rod.length();i++)
+		{
+           if(l==input4)
+		   {
+			   res=res+rod.charAt(i);
+		   }
+		   l++;
+		}
+		for(int i=rod.length()-1;i>=0;i--)
+		{
+            if(r==input4)
+			{
+				res=res+rod.charAt(i);
+			}
+			r++;
+		}
+		String res1="";
+		for(int i=0;i<res.length();i++)
+		{
+            if(res.charAt(i)>='A' && res.charAt(i)<='Z')
+			{
+				res1+=Character.toLowerCase(res.charAt(i));
+			}
+			else if(res.charAt(i)>='a' && res.charAt(i)<='z')
+			{
+				res1+=Character.toUpperCase(res.charAt(i));
+			}
+			else
+			{
+				res1+=res.charAt(i);
+			}
+		}
+		return res1;
+------------------------------------------------------------------------------------
+Robot
+
+	int flag=0;
+		String[] c1=input3.split("-");
+		String[] c2=input4.split(" ");
+		int row=Integer.parseInt(c1[0]);
+		int col=Integer.parseInt(c1[1]);
+		String dir=c1[2];
+		for(int i=0;i<c2.length;i++)
+		{
+			if(c2[i].equals("R"))
+			{
+				if(dir.equals("E"))
+					dir="S";
+				else if(dir.equals("W"))
+					dir="N";
+				else if(dir.equals("S"))
+					dir="W";
+				else if(dir.equals("N"))
+					dir="E";
+			}
+			else if(c2[i].equals("L"))
+			{
+				if(dir.equals("E"))
+					dir="N";
+				else if(dir.equals("W"))
+					dir="S";
+				else if(dir.equals("S"))
+					dir="E";
+				else if(dir.equals("N"))
+					dir="W";
+			}
+			else if(c2[i].equals("M"))
+			{
+				if(dir.equals("E"))
+				{
+					if(row+1>input1)
+					{
+						flag=1;
+						break;
+					}
+					row++;
+				}	
+				else if(dir.equals("W"))
+				{
+					if(row-1<0)
+					{
+						flag=1;
+						break;
+					}
+					row--;
+				}
+				else if(dir.equals("S"))
+				{
+					if(col-1<0)
+					{
+						flag=1;
+						break;
+					}
+					col--;
+				}
+				else if(dir.equals("N"))
+				{
+					if(col+1>input2)
+					{
+						flag=1;
+						break;
+					}
+					col++;	
+				}					
+			}
+		}
+		String res=row+"-"+col+"-"+dir;
+		if(flag==1)
+			res=res+"-ER";
+		return res;
+---------------------------------------------------------------------------------------------------

@@ -1,0 +1,365 @@
+is even
+
+return (input1&1)==1 ? 1:2;
+-----------------------
+is odd
+
+return (input1&1)==1 ? 2:1;
+-------------------------------
+return last digit of given no
+
+if(input1<0) {input1=input1*-1;}
+return input1%10;
+----------------------------
+return second last digit of given no
+
+if(input1<0) {input1=input1*-1;}
+input1=input1/10;
+return input1==0 ? -1:input1%10;
+--------------------------------
+sum of last digits of two given nos
+
+if(input1<0){input1*=-1;}
+if(input2<0){input2*=-1;}
+return input1%10+input2%10;
+----------------------------------
+is n an exact multiple of m?
+
+if(input1==0 || input2==0)
+   return 3;
+return input1%input2==0 ? 2:1;
+--------------------------------
+of given 5 nos how many are even
+
+        int arr[]=new int[5];
+		arr[0]=input1;arr[1]=input2;arr[2]=input3;arr[3]=input4;arr[4]=input5;
+		int ct=0;
+		for(int i=0;i<5;i++)
+		{
+			if(arr[i]==0 || arr[i]%2==0)
+			{
+				ct++;
+			}
+		}
+		return ct;
+----------------------------------
+of given 5 nos how many are odd
+
+		int arr[]=new int[5];
+		arr[0]=input1;arr[1]=input2;arr[2]=input3;arr[3]=input4;arr[4]=input5;
+		int ct=0;
+		for(int i=0;i<5;i++)
+		{
+			if(arr[i]%2!=0)
+			{
+				ct++;
+			}
+		}
+		return ct;
+-----------------------------------
+Isprime?
+
+	    for(int i=2;i<=input1/2;i++)
+		{
+			if(input1%i==0)
+		       return 1;
+		}
+		return 2;
+-------------------------------------
+factorial of a no
+
+        int fact=1;
+		for(int i=1;i<=input1;i++)
+		{
+			fact=fact*i;
+		}
+		return fact;
+-------------------------------------
+nth fabnoic
+
+ 	   int a=0,b=1,c=0,ct=3;
+	   while(ct<=input1)
+	   {
+		   c=a+b;
+		   a=b;
+		   b=c;
+		   ct+=1;
+	   }
+	   return c;
+----------------------------------
+nth prime
+
+    int ct=0,flag,p;
+    for(int i=2;i<=1000000;i++)
+    {
+        flag=0;
+        for(int j=2;j<=i/2;j++)
+        {
+            if(i%j==0)
+            {
+                flag=1;
+                break;
+            }
+        }
+        if(flag==0)
+        {
+            ct+=1;
+            p=i;
+        }
+        if(ct==input1)
+        {
+            break;
+        }
+    }
+    return p;
+---------------------------------------------
+no of primes in specified range
+
+
+		for(int i=input1;i<=input2;i++)
+		{
+			flag=0;
+			for(int j=2;j<=i/2;j++)
+			{
+               if(i%j==0)
+			   {
+				   flag=1;
+				   break;
+			   }
+			}
+			if(flag==0)
+			{
+				ct+=1;
+			}
+		}
+		return ct;
+------------------------------------------------
+all digits count
+
+		int ct=0;
+		while(input1>0)
+		{
+			ct++;
+			input1/=10;
+		}
+		return ct;
+-----------------------------------------------------
+unique digits count
+
+     int hash[]=new int[10];
+	 while(input1>0)
+	 {
+		 hash[input1%10]++;
+		 input1/=10;
+	 }
+	 int ct=0;
+	 for(int i=0;i<10;i++)
+	 {
+       if(hash[i]!=0)
+	   {
+		   ct+=1;
+	   }
+	 }
+	 return ct;
+-----------------------------------------------------------
+non repated digits count
+
+     int hash[]=new int[10];
+	 while(input1>0)
+	 {
+		 hash[input1%10]++;
+		 input1/=10;
+	 }
+	 int ct=0;
+	 for(int i=0;i<10;i++)
+	 {
+       if(hash[i]==1)
+	   {
+		   ct+=1;
+	   }
+	 }
+	 return ct;
+-----------------------------------------------------------------
+sum of all digits in n
+
+        int s=0;
+		int flag=1;
+		if(input1<0)
+		{
+			flag=-1;
+			input1*=-1;
+		}
+		while(input1/10!=0)
+		{
+		while(input1>0)
+		{
+			s+=input1%10;
+			input1/=10;
+		}
+		input1=s;
+		s=0;
+		}
+		return flag*input1;
+------------------------------------------------------------------
+sum of even digits in n
+
+  		int od=0,ec=0;
+		while(input1>0)
+		{
+			if ((input1%10 &1)==1)
+			{
+				od+=input1%10;
+			}
+			else
+			{
+				ec+=input1%10;
+			}
+			input1/=10;
+		}
+		return ec;
+
+-----------------------------------------------
+sum of odd digits in n
+
+        int s=0;
+		int od=0,ec=0;
+		while(input1>0)
+		{
+			if ((input1%10 &1)==1)
+			{
+				od+=input1%10;
+			}
+			else
+			{
+				ec+=input1%10;
+			}
+			input1/=10;
+		}
+		return ec;
+----------------------------------------------
+sum of even or odd digits
+
+
+		int s=0;
+		int od=0,ec=0;
+		while(input1>0)
+		{
+			if ((input1%10 &1)==1)
+			{
+				od+=input1%10;
+			}
+			else
+			{
+				ec+=input1%10;
+			}
+			input1/=10;
+		}
+		if(input2.equals("even"))
+		{
+			return ec;
+		}
+		else{
+		return od;}
+--------------------------------------------
+is palindrome no ?
+
+		int len=Integer.toString(input1).length();
+		String s=Integer.toString(input1);
+		int i=0,j=len-1;
+		while(i<=j)
+		{
+			if(s.charAt(i)!=s.charAt(j))
+			{
+			  return 1;
+			}
+			i+=1;
+			j-=1;
+		}
+		return 2;
+-----------------------------------------------------
+is palindrome possible?
+
+
+		int hash[]=new int[10];
+		int oc=0;
+		while(input1>0)
+		{
+			hash[input1%10]++;
+			input1/=10;
+		}
+		for(int i=0;i<10;i++)
+		{
+           if(hash[i]%2!=0)
+		     oc+=1;
+		}
+		if(oc<=1)
+		  return 2;
+		else
+		  return 1;
+----------------------------------------------
+create pin using alpha ,beta ,gamma
+
+
+		int z[]=new int[3];
+		z[0]=input1%10;
+		z[1]=input2%10;
+		z[2]=input3%10;
+		input1/=10;input2/=10;input3/=10;
+		int z1=Math.min(Math.min(z[0],z[1]),z[2]);
+		int m1=Math.max(Math.max(z[0],z[1]),z[2]);
+
+		int o[]=new int[3];
+		o[0]=input1%10;
+		o[1]=input2%10;
+		o[2]=input3%10;
+		input1/=10;input2/=10;input3/=10;
+		int o1=Math.min(Math.min(o[0],o[1]),o[2]);
+        int m2=Math.max(Math.max(o[0],o[1]),o[2]);
+
+		int h[]=new int[3];
+		h[0]=input1%10;
+		h[1]=input2%10;
+		h[2]=input3%10;
+		input1/=10;input2/=10;input3/=10;
+		int h1=Math.min(Math.min(h[0],h[1]),h[2]);
+		int m3=Math.max(Math.max(h[0],h[1]),h[2]);
+
+		int f=Math.max(Math.max(m1,m2),m3);
+		return f*1000+h1*100+o1*10+z1;
+----------------------------------------------------------------------------
+weight of a hill pattern
+
+
+		int s=0;
+		for(int i=1;i<=input1;i++)
+		{
+          s+=input2*i;
+		  input2+=input3;
+		}
+		return s;
+-----------------------------------------------------------------------
+
+return second word to upper case
+
+        int i;
+		String[] c=input1.split(" ");
+		if(c.length==1)
+			return "LESS";
+		else 
+			return c[1].toUpperCase();
+----------------------------------------------------------
+isPalindrome?
+
+        int i=0,j=input1.length()-1;
+		input1=input1.toLowerCase();
+		while(i<=j)
+		{
+           if(input1.charAt(i)!=input1.charAt(j))
+		   {
+			   return 1;
+		   }
+		   i+=1;
+		   j-=1;
+		}	
+		return 2;
+--------------------------------------------------------
